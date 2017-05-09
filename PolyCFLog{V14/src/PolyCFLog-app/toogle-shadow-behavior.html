@@ -1,0 +1,27 @@
+<script>
+  var FormApp = FormApp || {}
+  FormApp.Shadow = {
+    properties : {
+      sombraToggle:{ type: Boolean }
+    },
+    listeners : {
+      click: "_crearSombra"
+    },
+
+    created: function() {
+      console.log('Highlighting for ', this, 'enabled!');
+    },
+
+    _crearSombra : function () {
+      if (this.sombraToggle){
+        this.style.boxShadow = "none";
+        this.sombraToggle = false;
+      }
+      else {
+        this.style.boxShadow = "10px 10px 20px black";
+        this.sombraToggle= true;
+      }
+    }
+
+  }
+</script>

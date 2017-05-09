@@ -1,0 +1,13 @@
+<script>
+    Hidding = {
+      listeners: {
+ click: "_hide"
+      },
+      _hide: function() {
+        this.style.visibility = "hidden";
+      },
+      created: function() {
+        console.log('Highlighting for ', this, 'enabled!');
+      },
+    }
+</script>

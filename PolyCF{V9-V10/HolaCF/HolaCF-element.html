@@ -1,0 +1,74 @@
+<!--HTML Imports-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html"> <!--llamamos al paper-input -->
+<link rel="import" href="./nombreCF-element.html">
+
+<dom-module id="HolaCF-element"><!--definimos con el dom-module nuestro componente y le ponenmos como id el nombre del componente-->
+  <template><!--html Templates es otra de las tecnologias de los web components-->
+
+  <style> /*Para darle el estilo que necesita*/
+  :host{
+    background-color:purple;
+    display:block; /* por default esta inline y no se ve nada*/
+  }
+  h1 {
+    color:white;
+  }
+  paper-button {
+    background-color: var(--paper-red-500);
+    color: white;
+  }
+  </style><!--EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE-->
+  <paper-button raised id="boton"on-click="funcionClick"> Click</paper-button>
+
+
+  <h1 id="titulo">
+    HOLA  <nombreCF-element name="{{name}}"></nombreCF-element>, mi edad es [[edad]]
+  </h1>
+
+
+</template>
+
+
+<script> // is: +el nombre del mismo html es un campo obligatorio //
+Polymer({
+  is: "HolaCF-element",
+  properties:{
+    name: {
+      type: String,
+      value: "Carlos",
+    },
+    edad: {
+      type: Number,
+      value: 26,
+    }
+  },
+  created: function(){
+
+  },
+
+  ready: function(){
+    this.$.boton.addEventListener("click",()=>{
+      this.funcionClick()
+    })
+    this.$$("paper-button").addEventListener("click",()=> this.funcionClick())
+    //this.$$("nombreCF-element").addEventListener("namechanged",()=> this.funcionClick())
+  },
+
+  attached: function(){
+    console.log("El elemento esta ya en el documento")
+  },
+  listeners:{
+    "namechanged": "funcionClick" //this.$$("nombreCF-element").addEventListener("namechanged",()=> this.funcionClick())
+    "click": "funcionClick"
+  },
+  funcionClick:  function(e){
+    console.log(e.target)
+    console.log("Ejecutaron Click")
+    this.name= "diste un click"
+  },
+})
+
+</script>
+
+</dom-module>

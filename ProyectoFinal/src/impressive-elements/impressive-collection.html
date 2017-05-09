@@ -1,0 +1,49 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+<link rel="import" href="impressive-code.html">
+
+
+<dom-module id="impressive-collection">
+<style>
+  * {
+      background-color: #eceff1;
+    }
+</style>
+
+  <template>
+      <style>
+      :host {
+        display: block;
+      }
+      paper-card {
+        display: block;
+        margin-top: 1em;
+      }
+      </style>
+      <template is="dom-repeat" items="{{collection}}" as="code">
+      <!-- Aquí-->
+      <paper-card heading="{{code.description}}" elevation="1">
+        <div class="card-content">
+
+        <impressive-code code="{{code.code}}" lang="{{code.lang}}"></impressive-code>
+
+        <p>{{code.lang}}</p>
+        </div>
+      </paper-card>
+
+    </template>
+
+  </template>
+
+
+  <script>
+  Polymer ({
+    is:"impressive-collection",
+    properties: {
+      collection: { type: Array, notify: true }
+    }
+
+  })
+  </script>
+</dom-module>

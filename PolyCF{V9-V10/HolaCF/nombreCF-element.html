@@ -1,0 +1,35 @@
+<dom-module id="nombreCF-element"><!--definimos con el dom-module nuestro componente y le ponenmos como id el nombre del componente-->
+  <template>
+<style>
+:host{
+/*background-color:purple; */
+display:inline; /* por default esta inline y no se ve nada*/
+}
+span {
+color:white;
+}
+</style>
+
+<span>mi nombre es {{name}}</span>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: "nombreCF-element",
+      properties:{
+        name:{
+          type: String,
+          value: "default",
+        }
+      },
+      ready:function(){
+        setTimeout(()=>{
+          this.fire("namechanged")
+        }, 3000)
+      }
+
+    })
+  </script>
+
+</dom-module>

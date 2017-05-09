@@ -1,0 +1,7 @@
+{
+  "name": "Proyecto Final",
+  "short_name": "Proyecto Final",
+  "description": "Un proyecto donde podemos crear y guardar pequeños snippets de codigo",
+  "start_url": "/",
+  "display": "standalone"
+}
